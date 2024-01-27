@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BMI calculator</title>
+    <style>
+      body {
+        background-color: #212121;
+        color: white;
+      }
+      input {
+        width: 100px;
+        height: 40px;
+        font-size: x-large;
+        /* justify-content: center; */
+      }
+      form {
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+        width: 98vw;
+        height: 96vh;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <form action="">
+        <input type="text" id="height" />CM <br />
+        <input type="text" id="weight" />KG
+        <br />
+        <button type="submit">Calculate</button>
+      </form>
+      <br />
+      <div id="results"></div>
+    </div>
+  </body>
+  <script>
+    const form = document.querySelector("form");
+    // this usecase will give you empty
+    // const height = parseInt(document.querySelector('#height').value)
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const height = parseInt(document.querySelector("#height").value);
+      const weight = parseInt(document.querySelector("#weight").value);
+      const results = document.querySelector("#results");
+
+      if (height === "" || height < 0 || isNaN(height)) {
+        results.innerHTML = `Please give a valid height ${height}`;
+      } else if (weight === "" || weight < 0 || isNaN(weight)) {
+        results.innerHTML = `Please give a valid weight ${weight}`;
+      } else {
+        const bmi = (weight / ((height * height) / 10000)).toFixed(2);
+        //show the result
+        results.innerHTML = `<span>${bmi}</span>`;
+      }
+    });
+  </script>
+</html>
