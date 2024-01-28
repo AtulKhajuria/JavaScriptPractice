@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Code with Atul</h1>
+    <h2>To watch the output this page go to the console output.</h2>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+  </body>
+  <script>
+    const stopButton = document.querySelector("#stop");
+    const startButton = document.querySelector("#start");
+
+    function start() {
+      let date = new Date();
+      console.log("logged at " + date.toLocaleTimeString());
+    }
+    let intervalId;
+    stopButton.addEventListener("click", function () {
+      clearInterval(intervalId);
+      intervalId = null;
+    });
+    startButton.addEventListener("click", function () {
+      intervalId = setInterval(start, 1000);
+    });
+  </script>
+</html>

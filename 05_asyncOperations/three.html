@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .container {
+      text-align: center;
+      margin-top: 150px;
+      font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    }
+    button {
+      width: 10%;
+      height: 30px;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <h1>Code with Atul</h1>
+      <p>It is a backgroundColor Switcher Project.</p>
+      <p>To start changing the bg-color press <b>Start</b></p>
+      <p>To stop changing the bg-color press <b>Stop</b></p>
+      <button id="start">Start</button>
+      <button id="stop">Stop</button>
+    </div>
+  </body>
+  <script>
+    const stopButton = document.querySelector("#stop");
+    const startButton = document.querySelector("#start");
+
+    function randomColor() {
+      const hex = "123456789ABCDEF";
+      let color = "#";
+      for (let i = 0; i < 6; i++) {
+        color += hex[Math.floor(Math.random() * 15)];
+      }
+      console.log(color);
+      return color;
+    }
+    function start() {
+      document.body.style.backgroundColor = randomColor();
+    }
+    let intervalId;
+    stopButton.addEventListener("click", function () {
+      clearInterval(intervalId);
+      intervalId = null;
+    });
+    startButton.addEventListener("click", function () {
+      intervalId = setInterval(start, 1000);
+    });
+  </script>
+</html>
